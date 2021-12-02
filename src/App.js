@@ -1,37 +1,26 @@
-import React, {useState, useEffect} from 'react'
-import './App.css';
+import React, {useEffect} from 'react'
+import Login from './components/Login'
 import Button from 'react-bootstrap/Button'
+import './css/App.css';
+
+import { Web3ReactProvider } from '@web3-react/core'
+import Web3 from 'web3'
+import  Home from './components/Home'
+
+function getLibrary(provider) {
+    return new Web3(provider)
+}
 
 function App() {
-
-  const [toggle, setToggle] = useState("signup")
-  useEffect ( () => {
-      if (toggle == "signup") {
-          document.getElementById("pw").style.display = "none"
-      }
-      else {
-          document.getElementById("pw").style.display = "inline-block"
-      }
-  })
 
   return (
     <div className="App">
         <h1>spacebook</h1>
-        {
-        <>
-            <Button variant="primary" onClick={() => {setToggle("signup")}}>
-           sign up
-        </Button>
-            <Button variant="secondary" onClick={() => {setToggle("login")}}>
-          login 
-        </Button>
-        </>
-        }
-        <br />
-        <input placeholder="john@spacebook.com" />
-        <br />
-        <input id="pw" type="password" placeholder="password" />
-        <br />
+        <Login />
+        <Web3ReactProvider getLibrary={getLibrary}>
+            <Home />
+        </Web3ReactProvider>
+      
     </div>
   );
 }

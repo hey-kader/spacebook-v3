@@ -1,0 +1,12 @@
+Button {
+    float: right;
+    margin: 0.2rem;
+    padding: 0.4rem;
+}
+
+#login {
+    align-items: right;
+    justify-content: right;
+    margin: 40% auto;
+    padding: 0.4rem;
+}
